@@ -1,0 +1,13 @@
+<h1>Birds of a Feather...</h1>
+
+<% @birds.each do | bird | %>
+  <h3><%= bird.name %></h3>
+  <table>
+    <% bird.attributes.each_pair do | key, value | %>
+      <tr>
+        <td><%= key %>: </td>
+        <td><%= value %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
