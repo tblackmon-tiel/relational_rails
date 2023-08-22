@@ -8,4 +8,6 @@ Rails.application.routes.draw do
 
   get "/flocks", to: "flocks#index"
   get "/flocks/:id", to: "flocks#show"
+
+  get "/birds", to: "birds#index"
 end
