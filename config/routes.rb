@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get "/", to: "welcome#index"
 
   get "/flocks", to: "flocks#index"
+  get "/flocks/:id", to: "flocks#show"
 end
