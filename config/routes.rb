@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   get "/flocks/:id", to: "flocks#show"
 
   get "/birds", to: "birds#index"
+  get "/birds/:id", to: "birds#show"
 end
