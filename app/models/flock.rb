@@ -1,0 +1,3 @@
+class Flock < ApplicationRecord
+  
+end
