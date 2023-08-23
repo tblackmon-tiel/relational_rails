@@ -1,4 +1,5 @@
 <h1>(<%= @flock.id %>) <%= @flock.name %></h1>
+<p>This flock contains <%= @bird_count %> birds.</p>
 
 <table>
   <% @flock.attributes.each_pair do | key, value | %>
