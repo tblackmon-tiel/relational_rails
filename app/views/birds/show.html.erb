@@ -1,4 +1,6 @@
 <h1>(<%= @bird.id %>) <%= @bird.name %></h1>
+<a href="/flocks">Return to all Flocks</a><br>
+<a href="/birds">Return to all Birds</a><br><br>
 
 <table>
   <% @bird.attributes.each_pair do | key, value | %>
