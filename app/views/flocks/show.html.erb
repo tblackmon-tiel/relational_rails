@@ -1,5 +1,7 @@
 <h1>(<%= @flock.id %>) <%= @flock.name %></h1>
-<p>This flock contains <%= @bird_count %> birds.</p>
+<a href="/flocks">Return to all Flocks</a><br>
+<a href="/birds">Return to all Birds</a><br><br>
+<p>This flock contains <a href="/flocks/<%= @flock.id %>/birds"><%= @bird_count %></a> birds.</p>
 
 <table>
   <% @flock.attributes.each_pair do | key, value | %>
