@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Birds Index", type: :feature do
+RSpec.describe "Birds Show", type: :feature do
   describe "US 4" do
     it "displays a given child record with attributes when visiting /birds/:id" do
       flock = Flock.create!(name: "Chicken's Flock", cage_number: 1, accepts_new_birds: true)

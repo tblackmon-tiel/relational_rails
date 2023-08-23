@@ -1,6 +1,6 @@
 class FlocksController < ApplicationController
   def index
-    @flocks = Flock.all
+    @flocks = Flock.order(created_at: :desc)
   end
 
   def show

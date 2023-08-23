@@ -9,7 +9,9 @@ RSpec.describe "Flocks Index", type: :feature do
       visit "/flocks"
 
       expect(page).to have_content(flock_1.name)
+      expect(page).to have_content(flock_1.created_at)
       expect(page).to have_content(flock_2.name)
+      expect(page).to have_content(flock_2.created_at)
     end
   end
 end
