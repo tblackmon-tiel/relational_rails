@@ -12,7 +12,10 @@ Rails.application.routes.draw do
   get "/flocks/:id", to: "flocks#show"
   patch "/flocks/:id", to: "flocks#update"
   get "/flocks/:id/edit", to: "flocks#edit"
+
   get "/flocks/:id/birds", to: "flock_birds#index"
+  post "flocks/:id/birds", to: "flock_birds#create"
+  get "/flocks/:id/birds/new", to: "flock_birds#new"
 
   get "/birds", to: "birds#index"
   get "/birds/:id", to: "birds#show"

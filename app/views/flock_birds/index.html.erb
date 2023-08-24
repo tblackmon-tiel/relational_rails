@@ -2,6 +2,8 @@
 <a href="/flocks">Return to all Flocks</a><br>
 <a href="/birds">Return to all Birds</a><br><br>
 
+<a href="/flocks/<%= @flock.id %>/birds/new">Add a Bird</a>
+
 <% @birds.each do | bird | %>
   <h3><%= bird.name %></h3>
   <table>
