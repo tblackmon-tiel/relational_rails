@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get "/", to: "welcome#index"
 
   get "/flocks", to: "flocks#index"
+  post "/flocks", to: "flocks#create"
+  get "/flocks/new", to: "flocks#new"
   get "/flocks/:id", to: "flocks#show"
   get "/flocks/:id/birds", to: "flocks#show_birds"
 
