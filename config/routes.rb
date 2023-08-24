@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   post "/flocks", to: "flocks#create"
   get "/flocks/new", to: "flocks#new"
   get "/flocks/:id", to: "flocks#show"
-  get "/flocks/:id/birds", to: "flocks#show_birds"
+  patch "/flocks/:id", to: "flocks#update"
+  get "/flocks/:id/edit", to: "flocks#edit"
+  get "/flocks/:id/birds", to: "flock_birds#index"
 
   get "/birds", to: "birds#index"
   get "/birds/:id", to: "birds#show"

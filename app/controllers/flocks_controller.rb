@@ -8,10 +8,6 @@ class FlocksController < ApplicationController
     @bird_count = Bird.where("flock_id = ?", params[:id]).count
   end
 
-  def show_birds
-    @birds = Bird.joins(:flock).where("flock_id = ?", params[:id])
-  end
-
   def new
 
   end
@@ -23,7 +19,23 @@ class FlocksController < ApplicationController
       accepts_new_birds: params[:accepts_new_birds]
     )
     flock.save
-    
+
     redirect_to "/flocks"
+  end
+
+  def edit
+    @flock = Flock.find(params[:id])
+  end
+
+  def update
+    flock = Flock.find(params[:id])
+    flock.update(
+      name: params[:name],
+      cage_number: params[:cage_number],
+      accepts_new_birds: params[:accepts_new_birds]
+    )
+    flock.save
+
+    redirect_to "/flocks/#{flock.id}"
   end
 end

@@ -1,0 +1,12 @@
+<form action="/flocks/<%= @flock.id %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="patch">
+  <h1>Update Flock</h1>
+  <label for="name">Flock name:</label><br>
+  <input type="text" name="name" value="<%= @flock.name %>"><br>
+  <label for="cage_number">Cage number:</label><br>
+  <input type="number" name="cage_number" value="<%= @flock.cage_number %>"><br>
+  <label for="accepts_new_birds">Accepts new birds? (true/false):</label><br>
+  <input type="text" name="accepts_new_birds" value="<%= @flock.accepts_new_birds %>"><br><br>
+  <input type="submit" value="Update Flock">
+</form>
