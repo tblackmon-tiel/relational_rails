@@ -5,7 +5,6 @@ class FlocksController < ApplicationController
 
   def show
     @flock = Flock.find(params[:id])
-    @bird_count = Bird.where("flock_id = ?", params[:id]).count
   end
 
   def new
