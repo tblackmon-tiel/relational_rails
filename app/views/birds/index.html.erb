@@ -1,7 +1,8 @@
 <h1>Bird Index</h1>
 
 <% @birds.each do | bird | %>
-  <h3><%= bird.name %></h3>
+  <h3><%= bird.name %><span style="display: inline-block; width: 1em;"></span>
+  <a href="/birds/<%= bird.id %>/edit">Update Bird</a></h3>
   <table>
     <% bird.attributes.each_pair do | key, value | %>
       <tr>
