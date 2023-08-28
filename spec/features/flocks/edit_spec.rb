@@ -5,6 +5,22 @@ RSpec.describe "Flock Edit" do
     @flock_1 = Flock.create!(name: "Chicken's Flock", cage_number: 1, accepts_new_birds: true)
   end
 
+  describe "US 8" do
+    it "has a link to the Bird Index page" do
+      visit "/flocks"
+
+      expect(page).to have_link('Return to all Birds', href: "/birds")
+    end
+  end
+  
+  describe "US 9" do
+    it "has a link to the Flock Index page" do
+      visit "/flocks"
+
+      expect(page).to have_link('Return to all Flocks', href: "/flocks")
+    end
+  end
+  
   describe "US 12" do
     it "has a form containing the flock's attributes" do
       visit "/flocks/#{@flock_1.id}/edit"

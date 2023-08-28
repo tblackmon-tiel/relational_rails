@@ -1,6 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe "Flocks New", type: :feature do
+  describe "US 8" do
+    it "has a link to the Bird Index page" do
+      visit "/flocks"
+
+      expect(page).to have_link('Return to all Birds', href: "/birds")
+    end
+  end
+  
+  describe "US 9" do
+    it "has a link to the Flock Index page" do
+      visit "/flocks"
+
+      expect(page).to have_link('Return to all Flocks', href: "/flocks")
+    end
+  end
+  
   describe "US 11" do
     it "has a form to create a new flock" do
       visit "/flocks/new"

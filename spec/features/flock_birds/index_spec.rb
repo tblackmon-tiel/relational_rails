@@ -35,4 +35,28 @@ RSpec.describe "Flock_Birds Index", type: :feature do
       expect(page).to have_content(@bird_3.is_bonded)
     end
   end
+
+  describe "US 8" do
+    it "has a link to the Bird Index page" do
+      visit "/flocks"
+
+      expect(page).to have_link('Return to all Birds', href: "/birds")
+    end
+  end
+  
+  describe "US 9" do
+    it "has a link to the Flock Index page" do
+      visit "/flocks"
+
+      expect(page).to have_link('Return to all Flocks', href: "/flocks")
+    end
+  end
+
+  describe "US 13" do
+    it "has a link to the flock_birds new (creation) page" do
+      visit "/flocks/#{@flock_1.id}/birds"
+
+      expect(page).to have_link("Add a Bird", href: "/flocks/#{@flock_1.id}/birds/new")
+    end
+  end
 end
