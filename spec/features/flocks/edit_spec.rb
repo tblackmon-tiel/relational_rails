@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Flock Edit" do
+RSpec.describe "Flocks Edit" do
   before(:each) do
     @flock_1 = Flock.create!(name: "Chicken's Flock", cage_number: 1, accepts_new_birds: true)
   end
