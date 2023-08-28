@@ -14,4 +14,11 @@ RSpec.describe "Flocks Index", type: :feature do
       expect(page).to have_content(flock_2.created_at)
     end
   end
+
+  describe "US 6" do
+    it "displays each parent record sorted by most recently created" do
+      flock_1 = Flock.create!(name: "Chicken's Flock", cage_number: 1, accepts_new_birds: true)
+      flock_2 = Flock.create!(name: "Random Flock", cage_number: 3, accepts_new_birds: false)
+    end
+  end
 end
