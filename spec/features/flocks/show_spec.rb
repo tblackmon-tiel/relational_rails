@@ -62,4 +62,12 @@ RSpec.describe "Flocks Show", type: :feature do
       expect(page).to have_link('2', href: "/flocks/#{@flock_1.id}/birds")
     end
   end
+
+  describe "US 12" do
+    it "has a link to update the currently shown flock" do
+      visit "/flocks/#{@flock_1.id}"
+
+      expect(page).to have_link('Update Flock', href: "/flocks/#{@flock_1.id}/edit")
+    end
+  end
 end
