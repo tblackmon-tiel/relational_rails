@@ -50,4 +50,14 @@ RSpec.describe "Flocks Index", type: :feature do
       expect(page).to have_link('Create a new Flock', href: "/flocks/new")
     end
   end
+
+  describe "US 17" do
+    it "has a link for every flock to visit the flock edit page" do
+      visit "/flocks"
+
+      expect(page).to have_link('Update Flock', href: "/flocks/#{@flock_1.id}/edit")
+      expect(page).to have_link('Update Flock', href: "/flocks/#{@flock_2.id}/edit")
+      expect(page).to have_link('Update Flock', href: "/flocks/#{@flock_3.id}/edit")
+    end
+  end
 end

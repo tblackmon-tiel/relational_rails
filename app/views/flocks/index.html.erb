@@ -1,7 +1,8 @@
 <h1>Flocks Index</h1>
 
 <% @flocks.each do |flock| %>
-  <h3><%= flock.name %> - Created: <%= flock.created_at %></h3>
+  <h3><%= flock.name %> - Created: <%= flock.created_at %>
+  <span style="display: inline-block; width: 1em;"></span><a href="/flocks/<%= flock.id %>/edit">Update Flock</a></h3>
 <% end %>
 
 <a href="/flocks/new">Create a new Flock</a>
