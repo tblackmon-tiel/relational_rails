@@ -8,4 +8,8 @@ class Flock < ApplicationRecord
   def get_bird_count
     self.birds.count
   end
+
+  def sort_birds_alpha
+    self.birds.order(:name)
+  end
 end

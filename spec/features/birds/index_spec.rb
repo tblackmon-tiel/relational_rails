@@ -38,12 +38,12 @@ RSpec.describe "Birds Index", type: :feature do
     it "only shows birds who have an is_bonded value of true" do
       visit "/birds"
 
-      expect(page).to have_content(@bird_1.name)
-      expect(page).to have_content(@bird_1.band_id)
-      expect(page).to have_content(@bird_2.name)
-      expect(page).to have_content(@bird_2.band_id)
-      expect(page).to_not have_content(@bird_3.name)
-      expect(page).to_not have_content(@bird_3.band_id)
+      expect(page).to have_content("name: #{@bird_1.name}")
+      expect(page).to have_content("band_id: #{@bird_1.band_id}")
+      expect(page).to have_content("name: #{@bird_2.name}")
+      expect(page).to have_content("band_id: #{@bird_2.band_id}")
+      expect(page).to_not have_content("name: #{@bird_3.name}")
+      expect(page).to_not have_content("band_id: #{@bird_3.band_id}")
     end
   end
 end

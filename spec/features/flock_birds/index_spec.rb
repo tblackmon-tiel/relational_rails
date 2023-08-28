@@ -8,7 +8,8 @@ RSpec.describe "Flock_Birds Index", type: :feature do
     @flock_2_id = @flock_2.id
     @bird_1 = Bird.create!(flock_id: @flock_1_id, name: "Chicken", band_id: 272, age: 6, is_bonded: true)
     @bird_2 = Bird.create!(flock_id: @flock_1_id, name: "Kiwi", band_id: 23, age: 5, is_bonded: true)
-    @bird_3 = Bird.create!(flock_id: @flock_2_id, name: "Kiwi", band_id: 23, age: 5, is_bonded: true)
+    @bird_2 = Bird.create!(flock_id: @flock_1_id, name: "Coco", band_id: 10, age: 4, is_bonded: true)
+    @bird_3 = Bird.create!(flock_id: @flock_2_id, name: "Hiccup", band_id: 10, age: 10, is_bonded: false)
   end
   
   describe "US 5" do
@@ -57,6 +58,24 @@ RSpec.describe "Flock_Birds Index", type: :feature do
       visit "/flocks/#{@flock_1.id}/birds"
 
       expect(page).to have_link("Add a Bird", href: "/flocks/#{@flock_1.id}/birds/new")
+    end
+  end
+
+  describe "US 16" do
+    it "has a link to sort birds alphabetically" do
+      visit "/flocks/#{@flock_1.id}/birds"
+
+      expect(page).to have_link("Sort Birds Alphabetically", href: "/flocks/#{@flock_1.id}/birds?sort_alpha=true")
+    end
+
+    it "sorts the birds alphabetically once the link is clicked" do
+      visit "/flocks/#{@flock_1.id}/birds"
+
+      click_link("Sort Birds Alphabetically")
+      expect(page).to have_current_path("/flocks/#{@flock_1.id}/birds?sort_alpha=true")
+
+      expect("Chicken").to appear_before("Coco", only_text: true)
+      expect("Coco").to appear_before("Kiwi", only_text: true)
     end
   end
 end
