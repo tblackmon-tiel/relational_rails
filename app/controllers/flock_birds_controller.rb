@@ -1,7 +1,11 @@
 class FlockBirdsController < ApplicationController
   def index
     @flock = Flock.find(params[:id])
-    @birds = @flock.birds
+    if params[:sort_alpha] == "true"
+      @birds = @flock.sort_birds_alpha
+    else
+      @birds = @flock.birds
+    end
   end
 
   def new
