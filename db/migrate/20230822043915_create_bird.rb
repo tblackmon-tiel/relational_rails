@@ -10,6 +10,6 @@ class CreateBird < ActiveRecord::Migration[7.0]
       t.timestamps
     end
 
-    add_foreign_key :birds, :flocks, column: :flock_id, primary_key: :id
+    add_foreign_key :birds, :flocks
   end
 end

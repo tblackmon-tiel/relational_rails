@@ -7,9 +7,18 @@ Rails.application.routes.draw do
   get "/", to: "welcome#index"
 
   get "/flocks", to: "flocks#index"
+  post "/flocks", to: "flocks#create"
+  get "/flocks/new", to: "flocks#new"
   get "/flocks/:id", to: "flocks#show"
-  get "/flocks/:id/birds", to: "flocks#show_birds"
+  patch "/flocks/:id", to: "flocks#update"
+  get "/flocks/:id/edit", to: "flocks#edit"
+
+  get "/flocks/:id/birds", to: "flock_birds#index"
+  post "flocks/:id/birds", to: "flock_birds#create"
+  get "/flocks/:id/birds/new", to: "flock_birds#new"
 
   get "/birds", to: "birds#index"
   get "/birds/:id", to: "birds#show"
+  patch "/birds/:id", to: "birds#update"
+  get "/birds/:id/edit", to: "birds#edit"
 end

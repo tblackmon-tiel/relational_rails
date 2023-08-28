@@ -1,0 +1,12 @@
+<h1>Create a new Flock</h1>
+
+<form action="/flocks" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label for="name">Flock name:</label><br>
+  <input type="text" name="name"><br>
+  <label for="cage_number">Cage number:</label><br>
+  <input type="number" name="cage_number"><br>
+  <label for="accepts_new_birds">Accepting new birds? (true/false):</label><br>
+  <input type="text" name="accepts_new_birds"><br><br>
+  <input type="submit" value="Create Flock">
+</form>

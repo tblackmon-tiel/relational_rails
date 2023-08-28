@@ -1,0 +1,14 @@
+<h1>Add a new Bird to the Flock</h1>
+
+<form action="/flocks/<%= @flock.id %>/birds" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label for="name">Bird name:</label><br>
+  <input type="text" name="name"><br>
+  <label for="band_id">Band ID:</label><br>
+  <input type="number" name="band_id"><br>
+  <label for="age">Age:</label><br>
+  <input type="number" name="age"><br>
+  <label for="is_bonded">Is the bird bonded? (true/false):</label><br>
+  <input type="text" name="is_bonded"><br><br>
+  <input type="submit" value="Create Bird">
+</form>
