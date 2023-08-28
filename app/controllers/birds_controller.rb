@@ -1,6 +1,6 @@
 class BirdsController < ApplicationController
   def index
-    @birds = Bird.all
+    @birds = Bird.get_bonded_birds
   end
 
   def show

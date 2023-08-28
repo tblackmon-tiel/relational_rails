@@ -25,9 +25,9 @@ RSpec.describe "Flocks Edit" do
     it "has a form containing the flock's attributes" do
       visit "/flocks/#{@flock_1.id}/edit"
 
-      expect(find_field("name").value).to eq("Chicken's Flock")
-      expect(find_field("cage_number").value).to eq("1")
-      expect(find_field("accepts_new_birds").value).to eq("true")
+      expect(find_field("name").value).to eq(@flock_1.name)
+      expect(find_field("cage_number").value).to eq(@flock_1.cage_number.to_s)
+      expect(find_field("accepts_new_birds").value).to eq(@flock_1.accepts_new_birds.to_s)
       expect(page).to have_button("Update Flock")
     end
 

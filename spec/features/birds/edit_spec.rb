@@ -13,11 +13,11 @@ RSpec.describe "Birds Edit" do
     it "has a form filled in with the current bird's attributes" do
       visit "/birds/#{@bird_1.id}/edit"
 
-      expect(find_field("name").value).to eq("Chicken")
-      expect(find_field("flock_id").value).to eq("#{@flock_id}")
-      expect(find_field("band_id").value).to eq("272")
-      expect(find_field("age").value).to eq("6")
-      expect(find_field("is_bonded").value).to eq("true")
+      expect(find_field("name").value).to eq(@bird_1.name)
+      expect(find_field("flock_id").value).to eq(@bird_1.flock_id.to_s)
+      expect(find_field("band_id").value).to eq(@bird_1.band_id.to_s)
+      expect(find_field("age").value).to eq(@bird_1.age.to_s)
+      expect(find_field("is_bonded").value).to eq(@bird_1.is_bonded.to_s)
       expect(page).to have_button("Update Bird")
     end
 
