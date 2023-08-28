@@ -46,4 +46,14 @@ RSpec.describe "Birds Index", type: :feature do
       expect(page).to_not have_content("band_id: #{@bird_3.band_id}")
     end
   end
+
+  describe "US 18" do
+    it "has a link for each bird to visit the bird edit page" do
+      visit "/birds"
+
+      expect(page).to have_link('Update Bird', href: "/birds/#{@bird_1.id}/edit")
+      expect(page).to have_link('Update Bird', href: "/birds/#{@bird_2.id}/edit")
+      expect(page).to_not have_link('Update Bird', href: "/birds/#{@bird_3.id}/edit")
+    end
+  end
 end

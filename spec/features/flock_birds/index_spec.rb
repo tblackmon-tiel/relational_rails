@@ -8,8 +8,8 @@ RSpec.describe "Flock_Birds Index", type: :feature do
     @flock_2_id = @flock_2.id
     @bird_1 = Bird.create!(flock_id: @flock_1_id, name: "Chicken", band_id: 272, age: 6, is_bonded: true)
     @bird_2 = Bird.create!(flock_id: @flock_1_id, name: "Kiwi", band_id: 23, age: 5, is_bonded: true)
-    @bird_2 = Bird.create!(flock_id: @flock_1_id, name: "Coco", band_id: 10, age: 4, is_bonded: true)
-    @bird_3 = Bird.create!(flock_id: @flock_2_id, name: "Hiccup", band_id: 10, age: 10, is_bonded: false)
+    @bird_3 = Bird.create!(flock_id: @flock_1_id, name: "Coco", band_id: 10, age: 4, is_bonded: true)
+    @bird_4 = Bird.create!(flock_id: @flock_2_id, name: "Hiccup", band_id: 10, age: 10, is_bonded: false)
   end
   
   describe "US 5" do
@@ -29,17 +29,17 @@ RSpec.describe "Flock_Birds Index", type: :feature do
       
       visit "/flocks/#{@flock_2.id}/birds"
 
-      expect(page).to have_content(@bird_3.name)
-      expect(page).to have_content(@bird_3.flock_id)
-      expect(page).to have_content(@bird_3.band_id)
-      expect(page).to have_content(@bird_3.age)
-      expect(page).to have_content(@bird_3.is_bonded)
+      expect(page).to have_content(@bird_4.name)
+      expect(page).to have_content(@bird_4.flock_id)
+      expect(page).to have_content(@bird_4.band_id)
+      expect(page).to have_content(@bird_4.age)
+      expect(page).to have_content(@bird_4.is_bonded)
     end
   end
 
   describe "US 8" do
     it "has a link to the Bird Index page" do
-      visit "/flocks"
+      visit "/flocks/#{@flock_1.id}/birds"
 
       expect(page).to have_link('Return to all Birds', href: "/birds")
     end
@@ -47,7 +47,7 @@ RSpec.describe "Flock_Birds Index", type: :feature do
   
   describe "US 9" do
     it "has a link to the Flock Index page" do
-      visit "/flocks"
+      visit "/flocks/#{@flock_1.id}/birds"
 
       expect(page).to have_link('Return to all Flocks', href: "/flocks")
     end
@@ -76,6 +76,16 @@ RSpec.describe "Flock_Birds Index", type: :feature do
 
       expect("Chicken").to appear_before("Coco", only_text: true)
       expect("Coco").to appear_before("Kiwi", only_text: true)
+    end
+  end
+
+  describe "US 18" do
+    it "has a link for each bird to visit the bird's edit page" do
+      visit "/flocks/#{@flock_1.id}/birds"
+
+      expect(page).to have_link('Update Bird', href: "/birds/#{@bird_1.id}/edit")
+      expect(page).to have_link('Update Bird', href: "/birds/#{@bird_2.id}/edit")
+      expect(page).to have_link('Update Bird', href: "/birds/#{@bird_3.id}/edit")
     end
   end
 end
