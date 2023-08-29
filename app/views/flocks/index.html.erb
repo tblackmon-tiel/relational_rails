@@ -1,8 +1,15 @@
 <h1>Flocks Index</h1>
 
-<% @flocks.each do |flock| %>
-  <h3><%= flock.name %> - Created: <%= flock.created_at %>
-  <span style="display: inline-block; width: 1em;"></span><a href="/flocks/<%= flock.id %>/edit">Update Flock</a></h3>
-<% end %>
+<table>
+  <% @flocks.each do |flock| %>
+    <tr>
+      <td><%= flock.name %></td>
+      <td>- Created: <%= flock.created_at %></td>
+      <td><a href="/flocks/<%= flock.id %>/edit">Update Flock</a></td>
+      <td><%= button_to "Delete #{flock.name}", "/flocks/#{flock.id}", method: :delete %></td>
+    </tr>
+  <% end %>
+
+</table>
 
 <a href="/flocks/new">Create a new Flock</a>
