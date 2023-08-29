@@ -56,4 +56,29 @@ RSpec.describe "Birds Index", type: :feature do
       expect(page).to_not have_link('Update Bird', href: "/birds/#{@bird_3.id}/edit")
     end
   end
+
+  describe "US 23" do
+    it "has a button beside each bird to delete the bird" do
+      visit "/birds"
+
+      expect(page).to have_button("Delete #{@bird_1.name}")
+      expect(page).to have_button("Delete #{@bird_2.name}")
+      expect("Chicken").to appear_before("Delete #{@bird_1.name}", only_text: true)
+      expect("Kiwi").to appear_before("Delete #{@bird_2.name}", only_text: true)
+    end
+
+    it "deletes the bird when pressed" do
+      visit "/birds"
+
+      click_button("Delete #{@bird_2.name}")
+
+      expect(page).to have_current_path("/birds")
+      expect(page).to have_content("name: #{@bird_1.name}")
+      expect(page).to have_content("band_id: #{@bird_1.band_id}")
+      expect(page).to have_content("age: #{@bird_1.age}")
+      expect(page).to_not have_content("name: #{@bird_2.name}")
+      expect(page).to_not have_content("band_id: #{@bird_2.band_id}")
+      expect(page).to_not have_content("age: #{@bird_2.age}")
+    end
+  end
 end

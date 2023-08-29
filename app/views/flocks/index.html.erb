@@ -3,7 +3,7 @@
 <table>
   <% @flocks.each do |flock| %>
     <tr>
-      <td><%= flock.name %></td>
+      <td><a href="/flocks/<%= flock.id %>"><%= flock.name %></a></td>
       <td>- Created: <%= flock.created_at %></td>
       <td><a href="/flocks/<%= flock.id %>/edit">Update Flock</a></td>
       <td><%= button_to "Delete #{flock.name}", "/flocks/#{flock.id}", method: :delete %></td>
