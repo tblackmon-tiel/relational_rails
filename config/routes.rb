@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get "/flocks/new", to: "flocks#new"
   get "/flocks/:id", to: "flocks#show"
   patch "/flocks/:id", to: "flocks#update"
+  delete "/flocks/:id", to: "flocks#destroy"
   get "/flocks/:id/edit", to: "flocks#edit"
 
   get "/flocks/:id/birds", to: "flock_birds#index"
@@ -20,5 +21,6 @@ Rails.application.routes.draw do
   get "/birds", to: "birds#index"
   get "/birds/:id", to: "birds#show"
   patch "/birds/:id", to: "birds#update"
+  delete "/birds/:id", to: "birds#destroy"
   get "/birds/:id/edit", to: "birds#edit"
 end

@@ -1,5 +1,5 @@
 class Flock < ApplicationRecord
-  has_many :birds
+  has_many :birds, dependent: :destroy
 
   validates_presence_of :name
   validates_presence_of :cage_number
