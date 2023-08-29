@@ -1,6 +1,10 @@
 class FlocksController < ApplicationController
   def index
-    @flocks = Flock.order(created_at: :desc)
+    if params[:sort] == nil
+      @flocks = Flock.order(created_at: :desc)
+    else
+      @flocks = Flock.order_by_count
+    end
   end
 
   def show

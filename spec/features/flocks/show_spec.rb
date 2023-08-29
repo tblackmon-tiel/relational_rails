@@ -31,11 +31,11 @@ RSpec.describe "Flocks Show", type: :feature do
     it "shows the number of birds associated with the flock" do
       visit "/flocks/#{@flock_1.id}"
 
-      expect(page).to have_content("This flock contains 2 (click to view) birds.")
+      expect(page).to have_content("This flock contains 2 birds.")
 
       visit "/flocks/#{@flock_2.id}"
       
-      expect(page).to have_content("This flock contains 1 (click to view) birds.")
+      expect(page).to have_content("This flock contains 1 birds.")
     end
   end
 

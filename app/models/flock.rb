@@ -14,6 +14,11 @@ class Flock < ApplicationRecord
   end
 
   def birds_by_age(age)
-    test = self.birds.where("age >= ?", age)
+    self.birds.where("age >= ?", age)
+  end
+
+  def self.order_by_count
+    Flock.find_by_sql("select flocks.*, COUNT(birds.flock_id) as bird_count from flocks left join birds on flocks.id = birds.flock_id
+    group by flocks.id, flocks.name order by bird_count desc")
   end
 end
