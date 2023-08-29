@@ -1,7 +1,7 @@
 class FlocksController < ApplicationController
   def index
     if params[:sort] == nil
-      @flocks = Flock.order(created_at: :desc)
+      @flocks = Flock.flocks_by_creation_date
     else
       @flocks = Flock.order_by_count
     end

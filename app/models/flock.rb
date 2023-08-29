@@ -5,6 +5,10 @@ class Flock < ApplicationRecord
   validates_presence_of :cage_number
   validates :accepts_new_birds, inclusion: [true, false]
 
+  def self.flocks_by_creation_date
+    Flock.order(created_at: :desc)
+  end
+
   def get_bird_count
     self.birds.count
   end

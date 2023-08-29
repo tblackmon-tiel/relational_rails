@@ -25,6 +25,13 @@ RSpec.describe Flock, type: :model do
       @bird3 = Bird.create!(name: "Coco", flock_id: @flock_id, band_id: 3, age: 4, is_bonded: true)
       @bird4 = Bird.create!(name: "Bird 4", flock_id: @flock_2_id, band_id: 4, age: 4, is_bonded: true)
       @bird5 = Bird.create!(name: "Bird 5", flock_id: @flock_2_id, band_id: 5, age: 4, is_bonded: true)
+      @bird6 = Bird.create!(name: "Bird 6", flock_id: @flock_3_id, band_id: 6, age: 4, is_bonded: true)
+    end
+
+    describe "flocks_by_creation_date" do
+      it "returns all flocks ordered by created_at desc" do
+        expect(Flock.flocks_by_creation_date).to eq([@flock_3, @flock, @flock_2])
+      end
     end
 
     describe "get_bird_count" do
@@ -43,11 +50,21 @@ RSpec.describe Flock, type: :model do
       it "returns all birds in a flock, filtered by a given threshold on age" do
         expect(@flock.birds_by_age(5)).to eq([@bird1, @bird2])
       end
+
+      it "handles extreme inputs" do
+        expect(@flock.birds_by_age(183)).to eq([])
+        expect(@flock.birds_by_age(-1)).to eq([@bird1, @bird2, @bird3])
+      end
     end
 
     describe "order_by_count" do
       it "returns all flocks, ordered by count of birds associated with each flock" do
         expect(Flock.order_by_count).to eq([@flock, @flock_2, @flock_3])
+      end
+
+      it "handles flocks with no birds" do
+        flock_4 = Flock.create(name: "Flock 4", cage_number: 120, accepts_new_birds: false)
+        expect(Flock.order_by_count).to eq([@flock, @flock_2, @flock_3, flock_4])
       end
     end
   end
