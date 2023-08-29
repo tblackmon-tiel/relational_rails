@@ -12,4 +12,8 @@ class Flock < ApplicationRecord
   def sort_birds_alpha
     self.birds.order(:name)
   end
+
+  def birds_by_age(age)
+    test = self.birds.where("age >= ?", age)
+  end
 end

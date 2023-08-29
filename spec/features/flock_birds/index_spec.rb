@@ -88,4 +88,35 @@ RSpec.describe "Flock_Birds Index", type: :feature do
       expect(page).to have_link('Update Bird', href: "/birds/#{@bird_3.id}/edit")
     end
   end
+
+  describe "US 21" do
+    it "has a form to return only records over a given threshold" do
+      visit "/flocks/#{@flock_1.id}/birds"
+
+      expect(page).to have_field("age_filter")
+      expect(page).to have_button("Apply Age Filter")
+      expect(page).to have_content("name: #{@bird_1.name}")
+      expect(page).to have_content("band_id: #{@bird_1.band_id}")
+      expect(page).to have_content("is_bonded: #{@bird_1.is_bonded}")
+      expect(page).to have_content("name: #{@bird_2.name}")
+      expect(page).to have_content("band_id: #{@bird_2.band_id}")
+      expect(page).to have_content("is_bonded: #{@bird_2.is_bonded}")
+      expect(page).to have_content("name: #{@bird_3.name}")
+      expect(page).to have_content("band_id: #{@bird_3.band_id}")
+      expect(page).to have_content("is_bonded: #{@bird_3.is_bonded}")
+
+      fill_in("age_filter", with: 5)
+      click_button("Apply Age Filter")
+
+      expect(page.current_path).to include("/flocks/#{@flock_1.id}/birds")
+      expect(page).to have_content("name: #{@bird_1.name}")
+      expect(page).to have_content("band_id: #{@bird_1.band_id}")
+      expect(page).to have_content("is_bonded: #{@bird_1.is_bonded}")
+      expect(page).to have_content("name: #{@bird_2.name}")
+      expect(page).to have_content("band_id: #{@bird_2.band_id}")
+      expect(page).to have_content("is_bonded: #{@bird_2.is_bonded}")
+      expect(page).to_not have_content("name: #{@bird_3.name}")
+      expect(page).to_not have_content("band_id: #{@bird_3.band_id}")
+    end
+  end
 end

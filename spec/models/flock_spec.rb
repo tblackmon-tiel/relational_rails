@@ -32,5 +32,11 @@ RSpec.describe Flock, type: :model do
         expect(@flock.sort_birds_alpha).to eq([@bird2, @bird3, @bird1])
       end
     end
+
+    describe "birds_by_age" do
+      it "returns all birds in a flock, filtered by a given threshold on age" do
+        expect(@flock.birds_by_age(5)).to eq([@bird1, @bird2])
+      end
+    end
   end
 end

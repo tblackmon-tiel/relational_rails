@@ -60,4 +60,27 @@ RSpec.describe "Flocks Index", type: :feature do
       expect(page).to have_link('Update Flock', href: "/flocks/#{@flock_3.id}/edit")
     end
   end
+
+  describe "US 22" do
+    it "has a button beside each flock to delete the flock" do
+      visit "/flocks"
+
+      expect(page).to have_button("Delete #{@flock_1.name}")
+      expect(page).to have_button("Delete #{@flock_2.name}")
+      expect(page).to have_button("Delete #{@flock_3.name}")
+      expect("Chicken's Flock").to appear_before("Delete #{@flock_1.name}", only_text: true)
+      expect("Random Flock").to appear_before("Delete #{@flock_2.name}", only_text: true)
+      expect("A Third Flock").to appear_before("Delete #{@flock_3.name}", only_text: true)
+    end
+
+    it "deletes the flock when pressed" do
+      visit "/flocks"
+
+      click_button("Delete #{@flock_3.name}")
+
+      expect(page).to have_current_path("/flocks")
+      expect(page).to_not have_content("name: #{@flock_3.name}")
+      expect(page).to_not have_content("cage_number: #{@flock_3.name}")
+    end
+  end
 end
