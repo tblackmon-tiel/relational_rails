@@ -3,6 +3,8 @@ class FlockBirdsController < ApplicationController
     @flock = Flock.find(params[:id])
     if params[:sort_alpha] == "true"
       @birds = @flock.sort_birds_alpha
+    elsif params[:age_filter] != nil
+      @birds = @flock.birds_by_age(params[:age_filter])
     else
       @birds = @flock.birds
     end

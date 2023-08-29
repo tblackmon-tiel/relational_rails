@@ -1,6 +1,12 @@
 <h1>Birds of a Feather...</h1>
 
 <a href="/flocks/<%= @flock.id %>/birds?sort_alpha=true">Sort Birds Alphabetically</a><br><br>
+<%= form_with url: "/flocks/#{@flock.id}/birds", method: :get, data: { turbo: false } do |form| %>
+  <%= form.label :age_filter %>
+  <%= form.number_field :age_filter %>
+  <%= form.submit "Apply Age Filter" %>
+<% end %>
+<br><br>
 <a href="/flocks/<%= @flock.id %>/birds/new">Add a Bird</a>
 
 <% @birds.each do | bird | %>
