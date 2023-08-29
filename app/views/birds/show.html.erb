@@ -9,4 +9,5 @@
   <% end %>
 </table>
 
-<a href="/birds/<%= @bird.id %>/edit">Update Bird</a>
+<a href="/birds/<%= @bird.id %>/edit">Update Bird</a><br><br>
+<%= button_to "Delete Bird", "/birds/#{@bird.id}", method: :delete %>

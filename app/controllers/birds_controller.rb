@@ -24,4 +24,11 @@ class BirdsController < ApplicationController
 
     redirect_to "/birds/#{bird.id}"
   end
+
+  def destroy
+    bird = Bird.find(params[:id])
+    bird.destroy
+
+    redirect_to "/birds"
+  end
 end
