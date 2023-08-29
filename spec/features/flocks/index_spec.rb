@@ -97,10 +97,10 @@ RSpec.describe "Flocks Index", type: :feature do
     it "has a link to sort the flocks by number of birds" do
       visit "/flocks"
 
-      expect(page).to have_link("Sort by Number of Birds", href: "/flocks?sort=birds")
+      expect(page).to have_link("Sort by Number of Birds", href: "/flocks?sort=count")
       click_link("Sort by Number of Birds")
 
-      expect(page).to have_current_path("/flocks?sort=birds")
+      expect(page).to have_current_path("/flocks?sort=count")
       expect(@flock_1.name).to appear_before(@flock_2.name, only_text: true)
       expect(@flock_2.name).to appear_before(@flock_3.name, only_text: true)
     end

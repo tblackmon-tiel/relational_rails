@@ -1,9 +1,10 @@
 <h1>Flocks Index</h1>
-
+<a href="/flocks?sort=count">Sort by Number of Birds</a><br><br>
 <table>
   <% @flocks.each do |flock| %>
     <tr>
       <td><a href="/flocks/<%= flock.id %>"><%= flock.name %></a></td>
+      <td>(contains <a href="/flocks/<%= flock.id %>/birds"><%= flock.get_bird_count %> bird(s))</a></td>
       <td>- Created: <%= flock.created_at %></td>
       <td><a href="/flocks/<%= flock.id %>/edit">Update Flock</a></td>
       <td><%= button_to "Delete #{flock.name}", "/flocks/#{flock.id}", method: :delete %></td>
@@ -11,5 +12,6 @@
   <% end %>
 
 </table>
+<br>
 
 <a href="/flocks/new">Create a new Flock</a>
