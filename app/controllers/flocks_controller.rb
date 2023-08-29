@@ -37,4 +37,11 @@ class FlocksController < ApplicationController
 
     redirect_to "/flocks/#{flock.id}"
   end
+
+  def destroy
+    flock = Flock.find(params[:id])
+    flock.destroy
+
+    redirect_to "/flocks"
+  end
 end

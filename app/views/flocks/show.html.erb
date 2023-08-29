@@ -10,4 +10,5 @@
   <% end %>
 </table>
 
-<a href="/flocks/<%= @flock.id %>/edit">Update Flock</a>
+<a href="/flocks/<%= @flock.id %>/edit">Update Flock</a><br><br>
+<%= button_to "Delete Flock", "/flocks/#{@flock.id}", method: :delete %>
