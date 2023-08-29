@@ -9,7 +9,7 @@ RSpec.describe "Flock_Birds Index", type: :feature do
     @bird_1 = Bird.create!(flock_id: @flock_1_id, name: "Chicken", band_id: 272, age: 6, is_bonded: true)
     @bird_2 = Bird.create!(flock_id: @flock_1_id, name: "Kiwi", band_id: 23, age: 5, is_bonded: true)
     @bird_3 = Bird.create!(flock_id: @flock_1_id, name: "Coco", band_id: 10, age: 4, is_bonded: true)
-    @bird_4 = Bird.create!(flock_id: @flock_2_id, name: "Hiccup", band_id: 10, age: 10, is_bonded: false)
+    @bird_4 = Bird.create!(flock_id: @flock_2_id, name: "Hiccup", band_id: 12, age: 10, is_bonded: false)
   end
   
   describe "US 5" do
