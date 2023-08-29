@@ -27,6 +27,12 @@ RSpec.describe Flock, type: :model do
       @bird5 = Bird.create!(name: "Bird 5", flock_id: @flock_2_id, band_id: 5, age: 4, is_bonded: true)
     end
 
+    describe "flocks_by_creation_date" do
+      it "returns all flocks ordered by created_at desc" do
+        expect(Flock.flocks_by_creation_date).to eq([@flock_3, @flock, @flock_2])
+      end
+    end
+
     describe "get_bird_count" do
       it "returns the number of birds associated with the flock" do
         expect(@flock.get_bird_count).to eq(3)
